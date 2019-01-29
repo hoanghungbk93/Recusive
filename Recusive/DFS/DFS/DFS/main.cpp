@@ -28,7 +28,7 @@ void findAllPoint(int a[][10], vector<Position> &allPoint)
 }
 void makeVisitedVector(vector<Position> allPoint, vector<bool> &visitedVector)
 {
-	for(int i = 0; i < allPoint.size(); ++i)
+	for(unsigned i = 0; i < allPoint.size(); ++i)
 	{
 		visitedVector.push_back(false);
 	}
@@ -36,7 +36,7 @@ void makeVisitedVector(vector<Position> allPoint, vector<bool> &visitedVector)
 
 bool isNearPoint(Position point1, Position point2 )
 {
-	int ret = false;
+	bool ret = false;
 	if((point1.x == point2.x && (1 == abs(point1.y - point2.y))) || (point1.y == point2.y && (1 == abs(point1.x - point2.x))))
 	{
 		ret = true;
@@ -47,7 +47,7 @@ bool isNearPoint(Position point1, Position point2 )
 bool existElement(vector<Position> tempVtPoint, Position point)
 {
 	bool ret = false;
-	for(int i = 0; i< tempVtPoint.size(); i++)
+	for(unsigned i = 0; i< tempVtPoint.size(); i++)
 	{
 		if(tempVtPoint[i].x == point.x && tempVtPoint[i].y == point.y)
 		{
@@ -64,7 +64,7 @@ void findAllNearPoint(vector<Position> allPoint, vector<vector<Position>> &group
 		tempVtPoint.push_back(allPoint[index]);
 		visitedVector[index] = true;
 	}
-	for(int i = 0; i < allPoint.size(); i++)
+	for(unsigned i = 0; i < allPoint.size(); i++)
 	{	
 		if(false == visitedVector[i])
 		{
@@ -97,7 +97,7 @@ vector<Position> maxPlace(vector<vector<Position>> group)
 	{	
 		int maxSize = group[0].size();
 		imax = 0;
-		for(int i = 1; i< group.size(); i++)
+		for(unsigned i = 1; i< group.size(); i++)
 		{
 			int temp = group[i].size();
 			if(temp > maxSize)
@@ -123,7 +123,7 @@ int calcultateCircuit(vector<Position> placeMaxi)
 int numberOneBeside(vector<Position> placeMaxi, Position point)
 {
 	int ret = 0;
-	for(int i = 0; i < placeMaxi.size(); i++)
+	for(unsigned i = 0; i < placeMaxi.size(); i++)
 	{
 		if(true == isNearPoint(point, placeMaxi[i]))
 		{
@@ -135,7 +135,7 @@ int numberOneBeside(vector<Position> placeMaxi, Position point)
 int calcultateStretch(vector<Position> placeMaxi)
 {
 	int circuit = 0;
-	for(int i = 0; i< placeMaxi.size(); i++)
+	for(unsigned i = 0; i< placeMaxi.size(); i++)
 	{
 		circuit += 4 - numberOneBeside(placeMaxi, placeMaxi[i]);
 	}

@@ -2,7 +2,7 @@
 #include <math.h>
 using namespace std;
 
-int reseverNumber(int number, int n)
+int reverseNumber(int number, int n)
 {
 	if(number < 10)
 	{
@@ -10,10 +10,10 @@ int reseverNumber(int number, int n)
 	}
 	else
 	{
-		return (number % 10 * pow(10, n - 1)) + reseverNumber(number / 10, n -1)  ;
+		return (number % 10 * pow(10, n - 1)) + reverseNumber(number / 10, n -1)  ;
 	}
 }
 int main()
 {
-	int a = reseverNumber(1, 1);
+	int a = reverseNumber(1, 1);
 }
