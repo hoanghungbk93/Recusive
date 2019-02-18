@@ -100,17 +100,44 @@ void insertionSortRecusive(int a[], int n, int i)
 	i ++;
 	insertionSortRecusive(a, n, i);
 }
+int partition (int a[], int low, int high)
+{
+	int i = low - 1;
+	int pivot = a[high];
+	for(int j = low; j < high; j++)
+	{
+		if(a[j] < pivot)
+		{
+			i++;
+			swapArr(a[i],a[j]);
+		}
+	}
+	swapArr(a[i + 1], a[high]);
+	return i + 1;
 
-
+}
+void quickSort(int a[], int low, int high)
+{
+	
+	if(low < high)
+	{
+		int pi = partition(a, low, high);
+		quickSort(a, low, pi - 1);
+		quickSort(a, pi + 1, high);
+	}
+}
 int main()
 {
-	int a[10] = {1,9,8,5,10,6,7,4,3,2};
-	int n =10;
+	int a[19] = {1, 4, 2, 4, 2, 4, 1, 2, 4, 1, 2, 2, 2, 2, 4, 1, 4, 4, 4};
+	int n = 19;
 	int start = 0;
 	int i = 1;
 
 	//selectionSortRecusive(a, n, start);
 	//bubleSortRecusive(a, n, i);
 	//insertionSort(a, n);
-	insertionSortRecusive(a, n, i);
+	//insertionSortRecusive(a, n, i);
+	quickSort(a, 0, n - 1);
+
+	
 }
